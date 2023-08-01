@@ -1,6 +1,6 @@
 package com.example.finalprojectbackend.service;
 
-import com.example.finalprojectbackend.model.AuthCredentials;
+
 import com.example.finalprojectbackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 
-   JavaMailSender javaMailSender;
+   private final JavaMailSender javaMailSender;
 
     @Autowired
     public EmailService(JavaMailSender javaMailSender) {

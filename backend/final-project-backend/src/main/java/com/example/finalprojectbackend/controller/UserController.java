@@ -2,6 +2,7 @@ package com.example.finalprojectbackend.controller;
 import com.example.finalprojectbackend.model.User;
 import com.example.finalprojectbackend.service.EmailService;
 import com.example.finalprojectbackend.util.ErrorMessage;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,6 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         try {
-//            validation first before send the email
             emailService.sendRegistrationEmail(user);
             return ResponseEntity.ok(ErrorMessage.EMAIL_SENT.getMessage());
         } catch (Exception e) {
@@ -31,9 +31,23 @@ public class UserController {
     }
 
     @GetMapping("/userList")
+    @PermitAll
     public ResponseEntity<List<User>> userList(){
         try {
-            return ResponseEntity.ok(User.users);
+            //return user list but with no password
+            List<User> userList =User.users
+                            .stream()
+                            .map(newUser -> new User(
+                                    newUser.getName(),
+                                    newUser.getLastName(),
+                                    newUser.getEmail(),
+                                    newUser.getRole()
+                                    )
+                            ).toList();
+
+            return ResponseEntity.ok(userList);
+
+
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }

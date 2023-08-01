@@ -1,5 +1,6 @@
-package com.example.finalprojectbackend.config.security;
+package com.example.finalprojectbackend.service;
 
+import com.example.finalprojectbackend.config.security.UserDetailsImpl;
 import com.example.finalprojectbackend.model.AuthCredentials;
 import com.example.finalprojectbackend.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
