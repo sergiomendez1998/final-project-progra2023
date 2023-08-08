@@ -1,4 +1,4 @@
-package com.example.finalprojectbackend.config;
+package com.example.finalprojectbackend.lab2you.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

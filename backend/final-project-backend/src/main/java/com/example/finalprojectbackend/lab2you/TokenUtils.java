@@ -1,12 +1,15 @@
-package com.example.finalprojectbackend.util;
+package com.example.finalprojectbackend.lab2you;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TokenUtils {
 
@@ -21,13 +24,13 @@ public class TokenUtils {
     * The token will have the name as extra information.
     * The token will have the expiration date.
      */
-    public static String createToken(String name, String email) {
+    public static String createToken(String name, String email, Collection<? extends GrantedAuthority> authorities) {
         long expirationTime = EXPIRATION_TIME*1000;
         Date expirationDate = new Date(System.currentTimeMillis() + expirationTime);
 
         Map<String, Object> extra = new HashMap<>();
         extra.put("name", name);
-
+        extra.put("roles", authorities);
         return Jwts.builder()
                 .setSubject(email)
                 .setExpiration(expirationDate)
@@ -40,6 +43,7 @@ public class TokenUtils {
     * This method will return the Authentication object with the username, password and authorities.
     * if the token is not valid will return null.
      */
+    @SuppressWarnings("unchecked")
     public static UsernamePasswordAuthenticationToken getAuthentication(String token) {
         try {
             Claims claims = Jwts.parserBuilder()
@@ -50,7 +54,13 @@ public class TokenUtils {
 
             String email = claims.getSubject();
 
-            return new UsernamePasswordAuthenticationToken(email, null, Collections.emptyList());
+            List<Map<String, String>> roles = (List<Map<String, String>>) claims.get("roles");
+
+            List<SimpleGrantedAuthority> authorities = roles.stream()
+                    .map(role -> new SimpleGrantedAuthority(role.get("authority")))
+                    .collect(Collectors.toList());
+
+            return new UsernamePasswordAuthenticationToken(email, null, authorities);
         } catch (JwtException e) {
             return null;
         }

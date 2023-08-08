@@ -1,7 +1,7 @@
-package com.example.finalprojectbackend.service;
+package com.example.finalprojectbackend.lab2you.controllers.service;
 
 
-import com.example.finalprojectbackend.model.User;
+import com.example.finalprojectbackend.lab2you.db.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

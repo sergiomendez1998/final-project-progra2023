@@ -1,8 +1,8 @@
-package com.example.finalprojectbackend.config.security.jwt;
+package com.example.finalprojectbackend.lab2you.api.filters;
 
-import com.example.finalprojectbackend.config.security.UserDetailsImpl;
-import com.example.finalprojectbackend.model.AuthCredentials;
-import com.example.finalprojectbackend.util.TokenUtils;
+import com.example.finalprojectbackend.lab2you.config.security.UserDetailsImpl;
+import com.example.finalprojectbackend.lab2you.db.model.AuthCredentials;
+import com.example.finalprojectbackend.lab2you.TokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -42,7 +42,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
-        String token = TokenUtils.createToken(userDetails.getName(), userDetails.getUsername());
+        String token = TokenUtils.createToken(userDetails.getName(), userDetails.getUsername(), userDetails.getAuthorities());
         response.addHeader("Authorization", "Bearer " + token);
         response.getWriter().flush();
         super.successfulAuthentication(request, response, chain, authResult);

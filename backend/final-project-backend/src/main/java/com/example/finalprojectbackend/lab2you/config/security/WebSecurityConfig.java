@@ -1,8 +1,9 @@
-package com.example.finalprojectbackend.config.security;
+package com.example.finalprojectbackend.lab2you.config.security;
 
 
-import com.example.finalprojectbackend.config.security.jwt.JWTAuthenticationFilter;
-import com.example.finalprojectbackend.config.security.jwt.JWTAuthorizationFilter;
+import com.example.finalprojectbackend.lab2you.api.filters.JWTAuthenticationFilter;
+import com.example.finalprojectbackend.lab2you.api.filters.JWTAuthorizationFilter;
+import com.example.finalprojectbackend.lab2you.Lab2YouConstants;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @AllArgsConstructor
@@ -39,6 +41,9 @@ public class WebSecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeRequests()
+                .requestMatchers(
+                        new AntPathRequestMatcher("/api/v1/userList","GET")
+                ).hasAnyAuthority(Lab2YouConstants.lab2YouRoles.ADMIN.getRole(),Lab2YouConstants.lab2YouRoles.ANALYST.getRole())
                 .anyRequest()
                 .authenticated()
                 .and()

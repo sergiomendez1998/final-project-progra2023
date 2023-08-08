@@ -1,4 +1,4 @@
-package com.example.finalprojectbackend.model;
+package com.example.finalprojectbackend.lab2you.db.model;
 
 import lombok.Data;
 

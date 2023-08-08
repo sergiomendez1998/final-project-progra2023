@@ -1,6 +1,6 @@
-package com.example.finalprojectbackend.config.security.jwt;
+package com.example.finalprojectbackend.lab2you.api.filters;
 
-import com.example.finalprojectbackend.util.TokenUtils;
+import com.example.finalprojectbackend.lab2you.TokenUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

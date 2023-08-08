@@ -1,8 +1,7 @@
-package com.example.finalprojectbackend.service;
+package com.example.finalprojectbackend.lab2you.controllers.service;
 
-import com.example.finalprojectbackend.config.security.UserDetailsImpl;
-import com.example.finalprojectbackend.model.AuthCredentials;
-import com.example.finalprojectbackend.model.User;
+import com.example.finalprojectbackend.lab2you.config.security.UserDetailsImpl;
+import com.example.finalprojectbackend.lab2you.db.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
