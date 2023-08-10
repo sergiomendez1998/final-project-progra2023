@@ -1,7 +1,7 @@
 package com.example.finalprojectbackend.lab2you.config.security;
 
 
-import com.example.finalprojectbackend.lab2you.db.model.UserEntity;
+import com.example.finalprojectbackend.lab2you.db.model.entities.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -48,7 +48,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return userEntity.isEnabled();
     }
 
     public String getName() {

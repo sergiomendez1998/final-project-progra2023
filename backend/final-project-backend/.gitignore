@@ -199,6 +199,3 @@ buildNumber.properties
 **logs
 **.factorypath
 **/bin
-
-# Ignore specific Spring Boot application properties files
-application-*.properties

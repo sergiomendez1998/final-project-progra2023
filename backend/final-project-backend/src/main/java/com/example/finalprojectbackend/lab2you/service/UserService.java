@@ -1,7 +1,7 @@
 package com.example.finalprojectbackend.lab2you.service;
 
-import com.example.finalprojectbackend.lab2you.db.model.UserEntity;
-import com.example.finalprojectbackend.lab2you.db.model.UserWrapper;
+import com.example.finalprojectbackend.lab2you.db.model.entities.UserEntity;
+import com.example.finalprojectbackend.lab2you.db.model.wrappers.UserWrapper;
 import com.example.finalprojectbackend.lab2you.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +28,14 @@ public class UserService {
     }
 
     public List<UserWrapper> executedReadAll() {
-        return userRepository.findAll()
+        return userRepository.findAllByEnabled(true)
                 .stream()
                 .map(user -> new UserWrapper(user, user.getRoles()))
                 .toList();
     }
+    public UserEntity findByCui(Long cui){
+        return userRepository.findByCui(cui);
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.finalprojectbackend.lab2you.db.model;
+package com.example.finalprojectbackend.lab2you.db.model.entities;
 
 
 

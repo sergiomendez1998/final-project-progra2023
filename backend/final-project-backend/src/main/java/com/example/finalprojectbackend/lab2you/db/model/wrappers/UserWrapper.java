@@ -1,5 +1,7 @@
-package com.example.finalprojectbackend.lab2you.db.model;
+package com.example.finalprojectbackend.lab2you.db.model.wrappers;
 
+import com.example.finalprojectbackend.lab2you.db.model.entities.Role;
+import com.example.finalprojectbackend.lab2you.db.model.entities.UserEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +18,7 @@ public class UserWrapper {
     private String lastName;
     private String address;
     private String email;
+    private String nit;
     private String phoneNumber;
     private List<Role> roles;
 

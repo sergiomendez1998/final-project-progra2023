@@ -47,8 +47,20 @@ public class WebSecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(
-                        new AntPathRequestMatcher("/api/v1/userList","GET")
-                ).hasAnyAuthority(Lab2YouConstants.lab2YouRoles.ADMIN.getRole(),Lab2YouConstants.lab2YouRoles.ANALYST.getRole())
+                        new AntPathRequestMatcher("/api/v1/registerUserFromExternalRequest","POST")
+                ).permitAll()
+                .requestMatchers(
+                        new AntPathRequestMatcher("/api/v1/userList","GET"),
+                        new AntPathRequestMatcher("/api/v1/registerUserFromInternalRequest","POST")
+                ).hasAuthority(
+                        Lab2YouConstants.lab2YouRoles.ADMIN.getRole()
+                )
+                .requestMatchers(
+                        new AntPathRequestMatcher("/api/v1/userList","GET"),
+                        new AntPathRequestMatcher("/api/v1/registerUserFromMedicalRequest","POST")
+                ).hasAuthority(
+                        Lab2YouConstants.lab2YouRoles.MEDICAL.getRole()
+                )
                 .anyRequest()
                 .authenticated()
                 .and()
