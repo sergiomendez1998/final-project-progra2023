@@ -4,9 +4,13 @@ package com.example.finalprojectbackend.lab2you.config.security;
 import com.example.finalprojectbackend.lab2you.api.filters.JWTAuthenticationFilter;
 import com.example.finalprojectbackend.lab2you.api.filters.JWTAuthorizationFilter;
 import com.example.finalprojectbackend.lab2you.Lab2YouConstants;
+import com.example.finalprojectbackend.lab2you.config.WebMvcConfigCors;
 import lombok.AllArgsConstructor;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @AllArgsConstructor
@@ -54,6 +59,7 @@ public class WebSecurityConfig {
                 .and()
                 .addFilter(jwtAuthenticationFilter)
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+                .cors(cors-> cors.configurationSource(WebMvcConfigCors.corsConfigurationSource()))
                 .build();
     }
 
@@ -80,4 +86,11 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(){
+        FilterRegistrationBean<CorsFilter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
+        filterFilterRegistrationBean.setFilter(new CorsFilter(WebMvcConfigCors.corsConfigurationSource()));
+        filterFilterRegistrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        return filterFilterRegistrationBean;
+    }
 }

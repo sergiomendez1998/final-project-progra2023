@@ -1,7 +1,8 @@
 package com.example.finalprojectbackend.lab2you.api.filters;
 
+
 import com.example.finalprojectbackend.lab2you.config.security.UserDetailsImpl;
-import com.example.finalprojectbackend.lab2you.db.model.AuthCredentials;
+import com.example.finalprojectbackend.lab2you.config.security.AuthCredentials;
 import com.example.finalprojectbackend.lab2you.TokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
@@ -44,6 +45,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
         String token = TokenUtils.createToken(userDetails.getName(), userDetails.getUsername(), userDetails.getAuthorities());
         response.addHeader("Authorization", "Bearer " + token);
+        response.getWriter().write("{\"token\": \"" + token + "\"}");
+        response.setContentType("application/json");
         response.getWriter().flush();
         super.successfulAuthentication(request, response, chain, authResult);
     }

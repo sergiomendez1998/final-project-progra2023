@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class TokenUtils {
 
     private final static String ACCESS_TOKEN_SECRET = "0fhqd2mnCqlSTGSOTfZhbg7rXfaStyPc";
-    private final static Long EXPIRATION_TIME = 2_592_000_000L;
+    private final static Long EXPIRATION_TIME = 86_400L;// 24 hours in seconds
 
     /*
     * This method will create a token with the email and name of the user.
@@ -25,7 +25,7 @@ public class TokenUtils {
     * The token will have the expiration date.
      */
     public static String createToken(String name, String email, Collection<? extends GrantedAuthority> authorities) {
-        long expirationTime = EXPIRATION_TIME*1000;
+        long expirationTime = EXPIRATION_TIME*1000; // Convert to milliseconds
         Date expirationDate = new Date(System.currentTimeMillis() + expirationTime);
 
         Map<String, Object> extra = new HashMap<>();

@@ -16,4 +16,24 @@ public class Lab2YouUtils {
         return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
     }
 
+    public static boolean validatePhoneNumber(String phoneNumber) {
+        return phoneNumber.matches("^\\d{8}$");
+    }
+
+    public static boolean validateCUI(String cui) {
+        return cui.matches("^\\d{13}$");
+    }
+
+    public static boolean validateNit(String nit) {
+        return nit.matches("^\\d{9}$");
+    }
+
+    public String removeSpaces(String str) {
+        return str.replaceAll("\\s+","");
+    }
+
+    public String removeUnderScores(String str) {
+        return str.replaceAll("_","");
+    }
+
 }
