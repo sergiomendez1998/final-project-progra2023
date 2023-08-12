@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FinalProjectBackendApplication {
 
     public static void main(String[] args) {
-//        System.out.println(Lab2YouUtils.encodePassword("123456"));
+
         SpringApplication.run(FinalProjectBackendApplication.class, args);
     }
 
