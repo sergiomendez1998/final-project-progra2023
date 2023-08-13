@@ -21,6 +21,7 @@ export const AppRoutes = () => {
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/*' element={<Navigate to="/login" />} />
                         <Route path='/registrar' element={<RegisterNewUserModal />} />
+                        <Route path='*' element={<p>Pagina No Existe</p>} />
                     </>
             }
         </Routes>

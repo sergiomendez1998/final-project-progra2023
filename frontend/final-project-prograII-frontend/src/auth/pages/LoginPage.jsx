@@ -62,30 +62,37 @@ export const LoginPage = () => {
 
                     <form onSubmit={ onSubmit }>
                         <div className="modal-body">
-                            <label htmlFor="exampleInputEmail1" className="form-label">
-                                <i className="fas fa-envelope"></i> Correo electrónico
-                            </label>
-                            <input
-                                id="exampleInputEmail1"
-                                className="form-control my-3 w-75"
+                            <div className="row justify-content-center">
+                                <div className="col col-10">
+                                    <label htmlFor="exampleInputEmail1" className="form-label">
+                                        <i className="fas fa-envelope"></i> Correo electrónico
+                                    </label>
+                                    <input
+                                        id="exampleInputEmail1"
+                                        className="form-control my-3"
 
-                                name="email"
-                                value={email}
-                                onChange={ onInputChange }
-                            />
-                            <label htmlFor="exampleInputPassword1" className="form-label">
-                                <i className="fas fa-lock"></i> Contraseña
-                            </label>
-                            <input
-                                className="form-control my-3 w-75"
-                                id="exampleInputPassword1"
-                                type="password"
-                                name="password"
-                                value={password}
-                                onChange={onInputChange}
-                            />
+                                        name="email"
+                                        value={email}
+                                        onChange={ onInputChange }
+                                    />
+                                </div>
+                                <div className="col col-10">
+                                    <label htmlFor="exampleInputPassword1" className="form-label">
+                                        <i className="fas fa-lock"></i> Contraseña
+                                    </label>
+                                    <input
+                                        className="form-control my-3"
+                                        id="exampleInputPassword1"
+                                        type="password"
+                                        name="password"
+                                        value={password}
+                                        onChange={onInputChange}
+                                    />
+                                </div>
+                            </div>
+
                         </div>
-                        <div className="modal-footer">
+                        <div className="modal-footer d-flex justify-content-center">
                             <button
                                 className="btn btn-primary"
                                 type="submit">
