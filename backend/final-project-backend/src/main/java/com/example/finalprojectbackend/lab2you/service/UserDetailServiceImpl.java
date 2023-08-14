@@ -13,12 +13,11 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
 
     private final UserService userService;
-    private final RoleService roleService;
+
 
     @Autowired
-    public UserDetailServiceImpl(UserService userService, RoleService roleService) {
+    public UserDetailServiceImpl(UserService userService) {
         this.userService = userService;
-        this.roleService = roleService;
     }
     /*
     * This method is used to load the user by username.

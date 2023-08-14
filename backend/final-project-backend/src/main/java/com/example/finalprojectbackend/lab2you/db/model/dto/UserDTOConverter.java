@@ -16,6 +16,7 @@ public class UserDTOConverter {
         newUser.setEmail(userDTO.getEmail());
         newUser.setPassword(Lab2YouUtils.encodePassword(userDTO.getPassword()));
         newUser.setEnabled(true);
+        newUser.setGenero(userDTO.getGenero());
         return newUser;
     }
 }

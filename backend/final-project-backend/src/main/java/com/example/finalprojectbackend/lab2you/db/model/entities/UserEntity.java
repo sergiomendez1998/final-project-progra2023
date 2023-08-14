@@ -23,6 +23,7 @@ public class UserEntity extends BaseEntity {
     private String Nit;
     private String address;
     private String phoneNumber;
+    private String genero;
     private  boolean enabled;
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
