@@ -1,5 +1,3 @@
-import {Route, Routes} from "react-router-dom";
-import {RegistrationFormView} from "../RegistrationFormView.jsx";
 
 export const Dashboard = () => {
     return (

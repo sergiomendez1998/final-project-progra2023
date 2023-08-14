@@ -19,24 +19,13 @@ export const useAuth = () => {
 
             const response = await loginUser({ email, password });
             const token = response.data.token;
-            console.log(token);
-
-            const claims = JSON.parse(window.atob(token.split(".")[1]));
-            const name = claims.name;
+             const claims = JSON.parse(window.atob(token.split(".")[1]));
+            const username = claims.name;
             const rolesArray = Array.isArray(claims.roles) ? claims.roles : [];
-            console.log(name, roles);
 
-            dispatch(onLogin({ user, isAdmin: claims.isAdmin }));
-
-            sessionStorage.setItem('login', JSON.stringify({
-                isAuth: true,
-                name: name,
-                roles: rolesArray,
-                user,
-            }));
-            sessionStorage.setItem('token', `Bearer ${token}`);
-            console.log('checking login login', sessionStorage.getItem('login'));
+            dispatch(onLogin({ user:username, isAdmin: claims.isAdmin, token, roles: rolesArray}));
             navigate('/');
+
         } catch (error) {
             if (error.response?.status === 401) {
                 Swal.fire('Error Login', 'Username o password invalidos', 'error');
@@ -50,9 +39,7 @@ export const useAuth = () => {
 
     const handlerLogout = () => {
         dispatch(onLogout());
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('login');
-        sessionStorage.clear();
+
     }
     return {
         login: {

@@ -1,4 +1,5 @@
 import {RegisterPage} from "../pages/RegisterPage.jsx";
+import {RegisterForm} from "./RegisterForm.jsx";
 
 export const RegistrationFormView = () => {
     return (
@@ -21,8 +22,9 @@ export const RegistrationFormView = () => {
                         </div>
                     </div>
                 </div>
-
-                <RegisterPage/>
+                <div className="container my-4">
+                <RegisterForm/>
+                </div>
 
             </div>
         </>

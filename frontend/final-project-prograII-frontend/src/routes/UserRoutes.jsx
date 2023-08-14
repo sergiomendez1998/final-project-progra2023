@@ -1,7 +1,5 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import { Navbar } from "../components/layout/Navbar"
-import { RegisterPage } from "../pages/RegisterPage"
-import { UsersPage } from "../pages/UsersPage"
+import '../styles/adminlte.css';
+import { Route, Routes } from "react-router-dom"
 import { useSelector } from "react-redux"
 import {Header} from "../components/layout/Header.jsx";
 import {Menu} from "../components/layout/Menu.jsx";
@@ -18,7 +16,8 @@ export const UserRoutes = () => {
                 <Menu/>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/cardsView" element={<RegistrationFormView />} />
+                    {/*<Route path="/cardsView" element={<RegistrationFormView />} />*/}
+                    <Route path="/registrationForm" element={<RegistrationFormView />} />
                 </Routes>
                 <Footer/>
             </div>
