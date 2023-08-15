@@ -20,7 +20,7 @@ public class UserWrapper {
     private String email;
     private String nit;
     private String phoneNumber;
-    private String genero;
+    private String gender;
     private List<Role> roles;
 
     public UserWrapper(UserEntity userEntity, List<Role> roles) {
@@ -30,7 +30,7 @@ public class UserWrapper {
         this.address = userEntity.getAddress();
         this.email = userEntity.getEmail();
         this.phoneNumber = userEntity.getPhoneNumber();
-        this.genero = userEntity.getGenero();
+        this.gender = userEntity.getGender();
         this.roles = roles;
     }
 }

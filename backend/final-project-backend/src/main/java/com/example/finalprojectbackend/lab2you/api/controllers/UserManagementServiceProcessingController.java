@@ -33,7 +33,7 @@ public class UserManagementServiceProcessingController {
         userDTOConverter = new UserDTOConverter();
     }
 
-    @PostMapping("/registerFromExternalRequest")
+    @PostMapping("/registerUserFromExternalRequest")
     public ResponseEntity<String> registerUserFromAdminRequest(@RequestBody UserDTO userDTO) {
         try {
 

@@ -45,7 +45,10 @@ public class BaseEntity implements Serializable {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             String userName = authentication.getName();
-            return userName.substring(0, userName.indexOf("@"));
+            if (userName.contains("@")){
+                return userName.substring(0, userName.indexOf("@"));
+            }
+                return "new user";
         }
         return "new external user";
     }
