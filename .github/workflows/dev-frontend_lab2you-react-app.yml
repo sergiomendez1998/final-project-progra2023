@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'lab2you-react-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5AB7E352F4134A9B8FA75F5DC0C0CC5C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1AF4DA006202478B96157EAB6F1F5027 }}
           package: .
